@@ -1,0 +1,16 @@
+总体： 变量名需要使用 ${} 来取得变量的值， 比如${SRC} 就是取得SRC变量的值
+
+1. set命令： set命令可以指定变量，变量的值都是 字符串。 
+	格式  	set(变量名 变量值)
+	举例 		set(SRC a.c b.c d.c) 这样SRC的值就为 a.c b.c d.c。
+
+2. 一个重要的路径变量：CMAKE_CURRENT_SOURCE_DIR， 这个变量能够得到当前的CMakeLists.txt的位置
+
+3. file命令， 这里只介绍file文件搜索功能。
+	格式 	file(GLOB 变量名 路径通配符)   搜索路径下对应的文件， 不包含子目录
+		file(GLOB_RECURSE 变量名 路径通配符)  包含子目录
+	举例 file(GLOB SRC ./*.cpp)  获取当前路径下的所有cpp文件，并将其保存到变量SRC中
+
+4. include_directories命令，添加对应的头文件路径。
+	格式 include_directories(路径)
+	举例 include_directories(./include) 将当前目录下的include目录添加到头文件的搜索路径
