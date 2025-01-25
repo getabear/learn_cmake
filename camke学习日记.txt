@@ -13,4 +13,25 @@
 
 4. include_directories命令，添加对应的头文件路径。
 	格式 include_directories(路径)
-	举例 include_directories(./include) 将当前目录下的include目录添加到头文件的搜索路径
+	举例 include_directories(./include) 将当前目录下的include目录添加到头文件的搜索路径、
+
+5. add_executable命令，生成可执行程序。
+	格式 add_executable(可执行名称 源文件)
+	举例 add_executable(app ${SRC}) 生成一个叫app的可执行文件，他使用的源文件是变量SRC中存储的（可以指定多个）
+
+6. add_library命令，用于生成库文件（静态库和动态库）
+	格式 add_library(库文件名称 [STATIC | SHARED] 源文件)
+	举例 add_library(calc STATIC ${SRC}) 根据源文件，生成一个名为calc的静态库
+	       add_library(calc SHARED ${SRC}) 根据源文件，生成一个名为calc的动态库
+
+7.link_libraries命令，用于链接阶段库文件的链接。
+	格式 link_libraries(库文件名)
+	举例 link_libraries(calc nihao) 链接的时候需要将calc库文件和nihao的库文件链接进来（如果这两个库文件不在系统的搜索路径下，后面还需要使用link_directories将库文件的路径添加进来）
+
+8. link_directories命令， 添加库文件的搜索路径
+	格式 link_directories(路径)
+	举例 link_directories(${CAMKE_CURRENT_SOURCE_DIR}/lib1 ${CAMKE_CURRENT_SOURCE_DIR}/lib2) 将lib1和lib2两个路径添加到库文件搜索路径
+
+9.target_link_libraries命令， 对目标文件链接库文件
+	格式 target_link_libraries(目标  库文件) 
+	举例 target_link_libraries(app calc ...) 假设app是一个可执行文件，这个的含义就是对app链接库文件calc，以及其他库文件 ...
