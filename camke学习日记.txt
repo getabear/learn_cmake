@@ -76,3 +76,5 @@
 	格式： add_subdirectory(路径)
 	举例： add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/calc)
 
+15.  .cmake文件的作用： 帮助CMakeLists.txt进行复用，具体可以参看链接： https://blog.csdn.net/qq_38410730/article/details/102677143
+
